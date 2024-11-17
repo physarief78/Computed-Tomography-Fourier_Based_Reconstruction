@@ -7,7 +7,7 @@ In this repository ihave done the Fourier-based reconstruction for magnetic part
 ## 2. Mathematical Expression:
 ### 2.1. Signal Acquisition
 The mathematical expression that be used in this method is
-- $$D'[x][y] = D[x][y] \cdot e^{i \phi(x,y)}$$//
+- $$D'[x][y] = D[x][y] \cdot e^{i \phi(x,y)}$$\\
 where x and y is the index that represent 2D matrix. Then, the defintion of $\phi$ is
 - $$\phi(x,y)=2 \pi f \frac{x + y}{N_r}$$
 where $N_r$ is the total number of rows. If we assume there are some noises in the signal acquisition process, then we applied the noise function. Consider the noise is matching with Gaussian distribution, the mathematical expression for this noise is
