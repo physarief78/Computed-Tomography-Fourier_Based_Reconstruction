@@ -86,7 +86,7 @@ where $$\epsilon$$ is a small constant (e.g., $$10^{-8}$$) added for numerical s
 
 2. Gradient descent update
 Using gradient descent to minimize the TV norm, the denoised image $$u$$ is iteratively updated:
-- u_{i,j}^{(k+1)} = u_{i,j}^{(k)} - \lambda \, \nabla TV(u)_{i,j}.
+- $$u_{i,j}^{(k+1)} = u_{i,j}^{(k)} - \lambda \, \nabla TV(u)_{i,j}$$.
   Here:
   - $$u_{i,j}^{(k)}$$: pixel value at iteration $$k$$,
   - $$lambda$$: step size or regularization weight.
