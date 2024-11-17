@@ -2,7 +2,7 @@
 ## 1. Introduction
 Fourier based reconstruction is indeed fast and was one of the early methods used in CT image reconstruction. However, it has largely been superseded by more sophisticated algorithms such as FBP and iterative methods that handle real-world complexities better, including noise and artifacts. For certain applications where speed is critical and the data conditions are ideal, Fourier-based methods can still be very effective.
 
-In this repository ihave done the Fourier-based reconstruction for \textit{magnetic particle imaging} (MPI). This was done because MPI is a cutting-edge imaging technique with great potential in medical diagnostics and research. It allows for high-resolution, real-time imaging of magnetic nanoparticles, making it valuable for applications such as cancer detection, vascular imaging, for safety, and precision.
+In this repository ihave done the Fourier-based reconstruction for magnetic particle imaging (MPI). This was done because MPI is a cutting-edge imaging technique with great potential in medical diagnostics and research. It allows for high-resolution, real-time imaging of magnetic nanoparticles, making it valuable for applications such as cancer detection, vascular imaging, for safety, and precision.
 
 ## 2. Mathematical Expression:
 ### 2.1. Signal Acquisition
@@ -25,18 +25,16 @@ $$x[k] = \frac{1}{n} \sum_{m=0}^{n-1} X[m] \cdot e^{2\pi i \frac{mk}{n}}, \quad 
 For doing faster computation, after defined the DFT expression, now we implement the Cooley-Tukey algorithm.
 1. **Devide Step**
 - Split the input \( x[k] \) into two smaller arrays:
-     - \( x_{\text{even}}[k] = x[2k] \): Elements at even indices.
-     - \( x_{\text{odd}}[k] = x[2k+1] \): Elements at odd indices.
-   - If the size of \( x[k] \) is \( n \), the size of both \( x_{\text{even}}[k] \) and \( x_{\text{odd}}[k] \) is \( n/2 \).
+     - $$ x_{\text{even}}[k] = x[2k] $$: Elements at even indices.
+     - $$ x_{\text{odd}}[k] = x[2k+1] $$: Elements at odd indices.
+   - If the size of $$ x[k] $$ is $$ n $$, the size of both $$ x_{\text{even}}[k] $$ and $$ x_{\text{odd}}[k] $$ is $$ n/2 $$.
 
 2. **Recursive FFT**
  - Compute the FFT of the even and odd parts:
-     \[
-     X_{\text{even}}[m] = \text{FFT}(x_{\text{even}}[k])
-     \]
-     \[
-     X_{\text{odd}}[m] = \text{FFT}(x_{\text{odd}}[k])
-     \]
+     
+     $$X_{\text{even}}[m] = \text{FFT}(x_{\text{even}}[k])$$
+     
+     $$X_{\text{odd}}[m] = \text{FFT}(x_{\text{odd}}[k])$$
    
 3. **Combine Step**:
    - Combine \( X_{\text{even}}[m] \) and \( X_{\text{odd}}[m] \) using the symmetry and periodicity properties of the DFT:
