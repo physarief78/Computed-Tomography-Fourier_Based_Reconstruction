@@ -48,7 +48,7 @@ For doing faster computation, after defined the DFT expression, now we implement
 4. **Base Case**:
    - If the size of the input \( n = 1 \), the FFT result is simply:
      - $$X[0] = x[0]$$
-X[m] = \begin{cases}
+$$X[m] = \begin{cases}
 X_{\text{even}}[m] + W_m \cdot X_{\text{odd}}[m], & \text{if } m < n/2 \\
 X_{\text{even}}[m-n/2] - W_{m-n/2} \cdot X_{\text{odd}}[m-n/2], & \text{if } m \geq n/2
-\end{cases}
+\end{cases}$$
