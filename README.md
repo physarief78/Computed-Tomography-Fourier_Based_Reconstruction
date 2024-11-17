@@ -17,7 +17,7 @@ Then, the final mathematical expression of signal acquisition is
 - $$D''[x][y] = D'[x][y] + G(x,y)$$
 
 ### 2.2. Cooley-Tukey Radix-2 Decimation-in-Time (DIT) Fast Fourier Transform (FFT) Algorithm
-For implement the Cooley-Tukey algortihm, we must define the \textit{discrete fourier transform} DFT algortihm first. The DFT has mathematical expression of
+For implement the Cooley-Tukey algortihm, we must define the discrete fourier transform (DFT) algortihm first. The DFT has mathematical expression of
 - $$X[m] = \sum_{k=0}^{n-1} x[k] \cdot e^{-2\pi i \frac{mk}{n}}, \quad m = 0, 1, \dots, n-1$$
 the inverse mathematical expression of this is
 - $$x[k] = \frac{1}{n} \sum_{m=0}^{n-1} X[m] \cdot e^{2\pi i \frac{mk}{n}}, \quad k = 0, 1, \dots, n-1$$
@@ -48,7 +48,18 @@ For doing faster computation, after defined the DFT expression, now we implement
 4. **Base Case**:
    - If the size of the input \( n = 1 \), the FFT result is simply:
      - $$X[0] = x[0]$$
-$$X[m] = \begin{cases}
-X_{\text{even}}[m] + W_m \cdot X_{\text{odd}}[m], & \text{if } m < n/2 \\
-X_{\text{even}}[m-n/2] - W_{m-n/2} \cdot X_{\text{odd}}[m-n/2], & \text{if } m \geq n/2
-\end{cases}$$
+
+For two dimensional FFT, we can just compute another rows or columns, depends on the first computation either its rows or columns.
+
+### 2.3. Wiener Filter
+For implement the Wiener filter in the code, first w must define
+- Input image I with $$M \times N$$ dimension (2D)
+- 2D Window with size W and for half of the window is $$\frac{W}{2}$$
+
+For technical computation, now we define the
+1. **Local mean calculation**:  For each pixel (x, y), the local mean $$\mu_{x,y}$$ over $$W \times W$$ window centered at (x,y) is computed as:
+   - $$\mu_{x,y} = \frac{1}{|N_{x,y}|} \sum_{m,n \epsilon N_{x,y}} I[m,n]$$
+     for $$N_{x,y} is the set of pixels within the $$W \times W$$ window centered at (x,y) and $$|N_{x,y}|$$ is the number of pixels in $$N_{x,y}$$
+
+2. **Local Variance Calculation:** The local variance $$\sigma_{x,y}^2$$ within the window is given by:
+   - $$\sigma_{x,y}^2 = \frac{1}{|N_{x,y}|} \sum_{m,n \epsilon N_{x,y}} (I[m,n] - \mu_{x,y})^2$$
