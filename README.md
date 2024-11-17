@@ -25,9 +25,9 @@ $$x[k] = \frac{1}{n} \sum_{m=0}^{n-1} X[m] \cdot e^{2\pi i \frac{mk}{n}}, \quad 
 For doing faster computation, after defined the DFT expression, now we implement the Cooley-Tukey algorithm.
 1. **Devide Step**
 - Split the input \( x[k] \) into two smaller arrays:
-     - $$ x_{\text{even}}[k] = x[2k] $$: Elements at even indices.
-     - $$ x_{\text{odd}}[k] = x[2k+1] $$: Elements at odd indices.
-   - If the size of $$ x[k] $$ is $$ n $$, the size of both $$ x_{\text{even}}[k] $$ and $$ x_{\text{odd}}[k] $$ is $$ n/2 $$.
+     - $$x_{\text{even}}[k] = x[2k]$$: Elements at even indices.
+     - $$x_{\text{odd}}[k] = x[2k+1]$$: Elements at odd indices.
+   - If the size of $$x[k]$$ is $$n$$, the size of both $$x_{\text{even}}[k]$$ and $$x_{\text{odd}}[k]$$ is $$n/2$$.
 
 2. **Recursive FFT**
  - Compute the FFT of the even and odd parts:
