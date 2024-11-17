@@ -2,7 +2,7 @@
 ## 1. Introduction
 Fourier based reconstruction is indeed fast and was one of the early methods used in CT image reconstruction. However, it has largely been superseded by more sophisticated algorithms such as FBP and iterative methods that handle real-world complexities better, including noise and artifacts. For certain applications where speed is critical and the data conditions are ideal, Fourier-based methods can still be very effective.
 
-In this repository ihave done the Fourier-based reconstruction for magnetic particle imaging (MPI). This was done because MPI is a cutting-edge imaging technique with great potential in medical diagnostics and research. It allows for high-resolution, real-time imaging of magnetic nanoparticles, making it valuable for applications such as cancer detection, vascular imaging, for safety, and precision.
+In this repository i have done the Fourier-based reconstruction for magnetic particle imaging (MPI). This was done because MPI is a cutting-edge imaging technique with great potential in medical diagnostics and research. It allows for high-resolution, real-time imaging of magnetic nanoparticles, making it valuable for applications such as cancer detection, vascular imaging, for safety, and precision.
 
 ## 2. Mathematical Expression:
 ### 2.1. Signal Acquisition
