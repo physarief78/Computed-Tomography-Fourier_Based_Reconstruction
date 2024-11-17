@@ -63,3 +63,26 @@ For technical computation, now we define the
 
 2. **Local Variance Calculation:** The local variance $$\sigma_{x,y}^2$$ within the window is given by:
    - $$\sigma_{x,y}^2 = \frac{1}{|N_{x,y}|} \sum_{m,n \epsilon N_{x,y}} (I[m,n] - \mu_{x,y})^2$$
+3. **Wiener Filter Equation:** The filtered pixel value $$\hat{I}[x, y]$$ is computed as:
+   - $$\hat{I}[x, y]=\mu_{x,y} + max\left(0, 1 - \frac{\sigma_n^2}{\sigma_{x,y}^2}\right) \cdot (I[x,y] - \mu_{x,y})$$
+     where the $$\sigma_n^2$$ is noise variance.
+
+### 2.4 Total Variance Regularization
+The **Total Variation (TV) Denoising** algorithm minimizes the TV norm of an image to reduce noise while preserving edges.
+1. Objective
+The denoising process minimizes the following cost function:
+\[
+\min_{u} \left( \| u - f \|_2^2 + \lambda \, TV(u) \right),
+\]
+where:
+- \( f \): noisy input image,
+- \( u \): denoised image,
+- \( \| u - f \|_2^2 \): fidelity term ensuring \( u \) stays close to \( f \),
+- \( TV(u) \): total variation term promoting smoothness while preserving edges,
+- \( \lambda \): regularization parameter balancing the fidelity term and the TV norm.
+
+The discrete isotropic TV term \( TV(u) \) is defined as:
+\[
+TV(u) = \sum_{i, j} \sqrt{\left( u_{i+1,j} - u_{i,j} \right)^2 + \left( u_{i,j+1} - u_{i,j} \right)^2 + \epsilon},
+\]
+where \( \epsilon \) is a small constant (e.g., \( 10^{-8} \)) added for numerical stability.
