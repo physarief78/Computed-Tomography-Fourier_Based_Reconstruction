@@ -71,18 +71,22 @@ For technical computation, now we define the
 The **Total Variation (TV) Denoising** algorithm minimizes the TV norm of an image to reduce noise while preserving edges.
 1. Objective
 The denoising process minimizes the following cost function:
-\[
-\min_{u} \left( \| u - f \|_2^2 + \lambda \, TV(u) \right),
-\]
+
+- $$\min_{u} \left( \| u - f \|_2^2 + \lambda \, TV(u) \right)$$
 where:
-- \( f \): noisy input image,
-- \( u \): denoised image,
-- \( \| u - f \|_2^2 \): fidelity term ensuring \( u \) stays close to \( f \),
-- \( TV(u) \): total variation term promoting smoothness while preserving edges,
-- \( \lambda \): regularization parameter balancing the fidelity term and the TV norm.
+- $$f$$: noisy input image,
+- $$u$$: denoised image,
+- $$| u - f \|_2^2$$: fidelity term ensuring $$u$$ stays close to $$f$$,
+- $$TV(u)$$: total variation term promoting smoothness while preserving edges,
+- $$\lambda$$: regularization parameter balancing the fidelity term and the TV norm.
 
 The discrete isotropic TV term \( TV(u) \) is defined as:
-\[
-TV(u) = \sum_{i, j} \sqrt{\left( u_{i+1,j} - u_{i,j} \right)^2 + \left( u_{i,j+1} - u_{i,j} \right)^2 + \epsilon},
-\]
-where \( \epsilon \) is a small constant (e.g., \( 10^{-8} \)) added for numerical stability.
+- $$TV(u) = \sum_{x, y} \sqrt{\left( u_{x+1,y} - u_{x,y} \right)^2 + \left( u_{x,y+1} - u_{x,y} \right)^2 + \epsilon}$$
+where $$\epsilon$$ is a small constant (e.g., $$10^{-8}$$) added for numerical stability. If $$i+1$$ or $$j+1$$ exceeds image boundaries, those terms are set to zero.
+
+2. Gradient descent update
+Using gradient descent to minimize the TV norm, the denoised image $$u$$ is iteratively updated:
+- u_{i,j}^{(k+1)} = u_{i,j}^{(k)} - \lambda \, \nabla TV(u)_{i,j}.
+  Here:
+  - $$u_{i,j}^{(k)}$$: pixel value at iteration $$k$$,
+  - $$lambda$$: step size or regularization weight.
