@@ -1,4 +1,4 @@
-# Computed-Tomography-Fourier_Based_Reconstruction
+# Computed Tomography Direct Fourier Reconstruction Technique
 ## 1. Introduction
 Fourier based reconstruction is indeed fast and was one of the early methods used in CT image reconstruction. However, it has largely been superseded by more sophisticated algorithms such as FBP and iterative methods that handle real-world complexities better, including noise and artifacts. For certain applications where speed is critical and the data conditions are ideal, Fourier-based methods can still be very effective.
 
